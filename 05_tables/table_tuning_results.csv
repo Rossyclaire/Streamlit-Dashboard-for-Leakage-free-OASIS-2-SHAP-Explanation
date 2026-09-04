@@ -1,0 +1,4 @@
+model,best_cv_roc_auc,best_parameters
+Logistic Regression,0.9252341597796143,"{""model__class_weight"": ""balanced"", ""model__C"": 10}"
+Random Forest,0.932176308539945,"{""model__n_estimators"": 500, ""model__min_samples_leaf"": 5, ""model__max_features"": ""log2"", ""model__max_depth"": 5, ""model__class_weight"": ""balanced""}"
+SVC,0.9250275482093663,"{""model__kernel"": ""linear"", ""model__gamma"": ""scale"", ""model__class_weight"": ""balanced"", ""model__C"": 0.1}"

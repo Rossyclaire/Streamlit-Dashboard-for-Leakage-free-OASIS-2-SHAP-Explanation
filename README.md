@@ -14,54 +14,28 @@ The analysis uses Visit 1 baseline records and evaluates all models on the same 
 
 This is a machine-learning comparison study and research demonstration. It is not a clinical diagnostic, triage or treatment system.
 
-## Repository access for markers
+## Project access
 
-The project repository is hosted on GitHub. The repository link is provided in the dissertation appendix.
+The project is available through two equal access routes:
 
-Markers can access the project by opening the GitHub link in the appendix. They can then inspect the source code, saved analytical outputs, dashboard files and project documentation.
+1. The GitHub repository.
+2. The university OneDrive project folder.
 
-The repository address should be recorded here before the final commit:
+Both locations should contain the same reviewed project files and documentation. Neither route is a substitute for the other.
+
+The GitHub and OneDrive links are also provided in the dissertation appendix.
+
+## Access route 1: GitHub
+
+GitHub repository:
 
 ```text
-GitHub repository: https://github.com/Rossyclaire/Streamlit-Dashboard-for-Leakage-free-OASIS-2-SHAP-Explanation
+https://github.com/Rossyclaire/Streamlit-Dashboard-for-Leakage-free-OASIS-2-SHAP-Explanation
 ```
 
-The dashboard can be reviewed from the saved models, result tables and figures included in the repository. The original OASIS-2 workbook is required only if the complete analysis is being rerun. It does not need to be downloaded to inspect the dashboard, provided that the saved dashboard artefacts are included.
+Markers can open the repository link to inspect the source code, dashboard files, saved analytical outputs, README documentation, requirements file and master log.
 
-## Analysis scope
-
-The analysis:
-
-1. Loads and validates the OASIS-2 workbook.
-2. Cleans column names and converts numeric fields.
-3. Sorts records into a stable order.
-4. Excludes participants in the Converted group.
-5. Retains Visit 1 as the baseline record.
-6. Creates a binary target:
-   - Nondemented = 0
-   - Demented = 1
-7. Excludes variables that could cause diagnostic-label leakage.
-8. Creates a stratified training and held-out test split.
-9. Checks for subject overlap between the partitions.
-10. Uses grouped stratified cross-validation during model tuning.
-11. Tunes Logistic Regression, Random Forest and SVC.
-12. Evaluates the best fitted version of each model on the held-out test set.
-13. Generates descriptive tables, performance tables, figures, SHAP outputs and pairwise DeLong comparisons.
-14. Saves a run manifest and SHA-256 fingerprint for reproducibility.
-
-## Environment
-
-The verified analysis environment uses:
-
-- Python 3.12.10
-- Streamlit 1.61.1
-- Plotly 6.9.0
-
-The remaining package versions are listed in `requirements.txt`.
-
-## Accessing the project from GitHub
-
-### Step 1: Clone the repository
+### Downloading the repository
 
 Install Git if it is not already installed. Then open a terminal in VS Code or use a system terminal and run:
 
@@ -69,68 +43,137 @@ Install Git if it is not already installed. Then open a terminal in VS Code or u
 git clone https://github.com/Rossyclaire/Streamlit-Dashboard-for-Leakage-free-OASIS-2-SHAP-Explanation.git
 ```
 
-Move into the downloaded project folder:
+Move into the downloaded repository folder:
 
 ```powershell
-cd OASIS2_Dementia_Dissertation
+cd Streamlit-Dashboard-for-Leakage-free-OASIS-2-SHAP-Explanation
 ```
 
-The repository link in the command should be replaced with the GitHub link provided in the dissertation appendix.
+The repository folder name is based on the GitHub repository name. It may not be the same as the original local project-folder name.
 
-### Step 2: Create a virtual environment
+## Access route 2: University OneDrive
 
-On Windows:
+The same reviewed project is available in the author's university OneDrive folder.
+
+University OneDrive project link:
+
+```text
+[PASTE UNIVERSITY ONEDRIVE SHARING LINK HERE]
+```
+
+Markers or supervisors can use the OneDrive link to open or download the project files if they prefer OneDrive or experience difficulty using GitHub.
+
+The OneDrive project is stored under:
+
+```text
+My files > Dissertation Projects > OASIS2_Dementia_Dissertation
+```
+
+The OneDrive folder should contain the same reviewed materials as the GitHub repository, including:
+
+- The main OASIS-2 analysis script.
+- The dashboard source files.
+- The README documentation.
+- The requirements file.
+- Saved analytical tables.
+- Saved figures.
+- Saved model pipelines.
+- Processed-data files required by the dashboard.
+- The master log and notes documentation.
+- The synthetic dashboard test CSV, if included.
+
+The OneDrive link may require authentication with an authorised university account. Access permissions should be tested before final dissertation submission.
+
+## Keeping GitHub and OneDrive consistent
+
+GitHub and university OneDrive are equal access routes to the project.
+
+Before final submission, confirm that both locations contain:
+
+- The same dashboard files.
+- The same README.
+- The same requirements file.
+- The same saved models, tables and figures.
+- The same processed-data files required by the dashboard.
+- The same master log and notes documentation.
+- The same synthetic test data, if included.
+
+If a change is made after the project is uploaded, update both locations or clearly record which location contains the latest version.
+
+Do not include university account passwords, access tokens or other credentials in this README, GitHub repository or OneDrive folder.
+
+## Environment
+
+The verified analysis and dashboard environment uses:
+
+- Python 3.12.10
+- Streamlit 1.61.1
+- Plotly 6.9.0
+
+The remaining package versions are listed in `requirements.txt`.
+
+## Installing the project
+
+### Windows
+
+From the downloaded project folder, create a virtual environment:
 
 ```powershell
 python -m venv .venv
 ```
 
-On macOS or Linux:
-
-```bash
-python3 -m venv .venv
-```
-
-### Step 3: Activate the virtual environment
-
-On Windows PowerShell:
+Activate the virtual environment:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-On macOS or Linux:
-
-```bash
-source .venv/bin/activate
-```
-
-The terminal should show `(.venv)` after activation.
-
-### Step 4: Install the required packages
-
-Run:
+Install the required packages:
 
 ```powershell
 python -m pip install -r requirements.txt
 ```
 
-The dashboard requires Streamlit and Plotly. Their verified versions are:
+### macOS or Linux
+
+Create a virtual environment:
+
+```bash
+python3 -m venv .venv
+```
+
+Activate the virtual environment:
+
+```bash
+source .venv/bin/activate
+```
+
+Install the required packages:
+
+```bash
+python3 -m pip install -r requirements.txt
+```
+
+The `requirements.txt` file includes the verified dashboard dependencies:
 
 ```text
 streamlit==1.61.1
 plotly==6.9.0
 ```
 
-### Step 5: Launch the dashboard
+## Launching the dashboard
+
+The dashboard must be started through Streamlit. Individual dashboard page files should not be launched directly with Python.
 
 From the project root, run:
+
+### Windows
 
 ```powershell
 streamlit run dashboard\app.py
 ```
 
-On macOS or Linux, use:
+### macOS or Linux
 
 ```bash
 streamlit run dashboard/app.py
@@ -146,10 +189,10 @@ Open that address in a web browser.
 
 ## Project structure
 
+The recommended project structure is:
+
 ```text
 OASIS2_Dementia_Dissertation/
-│
-├── .venv/
 │
 ├── 01_raw_data/
 │   └── oasis2_longitudinal_demographic_data.xlsx
@@ -186,11 +229,19 @@ OASIS2_Dementia_Dissertation/
 └── requirements.txt
 ```
 
-The `.venv` folder should not be committed to GitHub. It is recreated locally using the installation instructions above.
+The following items should not be committed to GitHub or uploaded for marker review:
+
+```text
+.venv/
+__pycache__/
+*.pyc
+```
+
+The original OASIS-2 workbook should only be stored or shared where permitted by the applicable dataset access conditions.
 
 ## Input data
 
-The original OASIS-2 workbook should be placed at:
+To rerun the complete analysis, place the original OASIS-2 workbook at:
 
 ```text
 01_raw_data/oasis2_longitudinal_demographic_data.xlsx
@@ -218,7 +269,28 @@ ASF
 
 The analysis stops if a required source column is missing.
 
-The raw OASIS-2 workbook is required to rerun the analysis. Access to the original dataset must follow the applicable data-access conditions. The dashboard can be inspected without rerunning the analysis if the saved models, tables, figures and processed background data are present in the repository.
+The raw OASIS-2 workbook is required to rerun the analysis. It is not required to inspect the dashboard when the saved models, tables, figures and processed background data are available.
+
+## Analysis scope
+
+The analysis:
+
+1. Loads and validates the OASIS-2 workbook.
+2. Cleans column names and converts numeric fields.
+3. Sorts records into a stable order.
+4. Excludes participants in the Converted group.
+5. Retains Visit 1 as the baseline record.
+6. Creates a binary target:
+   - Nondemented = 0
+   - Demented = 1
+7. Excludes variables that could cause diagnostic-label leakage.
+8. Creates a stratified training and held-out test split.
+9. Checks for subject overlap between the partitions.
+10. Uses grouped stratified cross-validation during model tuning.
+11. Tunes Logistic Regression, Random Forest and SVC.
+12. Evaluates the best fitted version of each model on the held-out test set.
+13. Generates descriptive tables, performance tables, figures, SHAP outputs and pairwise DeLong comparisons.
+14. Saves a run manifest and SHA-256 fingerprint for reproducibility.
 
 ## Data preparation
 
@@ -428,21 +500,25 @@ The results are reported as benchmark results for one held-out split, not as def
 
 ## Repeating the main analysis
 
-To rerun the main analysis from the project root, activate the virtual environment and run:
+The original OASIS-2 workbook must be available in the expected raw-data location before rerunning the analysis.
+
+From the project root, activate the virtual environment and run:
+
+### Windows
 
 ```powershell
 python code\oasis2_binary_baseline.py
 ```
 
-On macOS or Linux, use:
+### macOS or Linux
 
 ```bash
 python3 code/oasis2_binary_baseline.py
 ```
 
-The original OASIS-2 workbook must be available in the expected raw-data location before rerunning the analysis.
-
 The script creates or updates the processed data, tables, figures, fitted models and run-manifest outputs.
+
+Rerunning the analysis may overwrite files with the same names. A separate timestamped archive or run identifier is required to preserve a complete history of multiple runs.
 
 ## SHAP explainability
 
@@ -462,7 +538,7 @@ The dashboard can also calculate an interactive patient-specific SHAP explanatio
 
 The interactive explanation is separate from the saved SHAP tables and figures generated by the main analysis script.
 
-## Streamlit dashboard
+## Streamlit dashboard pages
 
 The dashboard reads saved models, tables and figures. It does not retrain the models or alter the original held-out evaluation.
 
@@ -476,6 +552,8 @@ This page provides:
 - Selectable confusion matrices.
 - Pairwise DeLong AUC comparisons.
 - Download controls for the performance and DeLong tables.
+
+The displayed confusion-matrix rows are explicitly ordered so that the class labels correspond to the matrix values.
 
 ### SHAP Visualisations
 
@@ -511,7 +589,7 @@ This page provides access to the available saved CSV result tables and download 
 
 This page displays supported saved image figures and provides download controls. PDF files can be downloaded but are not displayed as interactive images.
 
-## NICE NG97 crosswalk
+## NICE NG97 conceptual crosswalk
 
 The dashboard includes a conceptual mapping between model predictors, SHAP contributions and selected NICE NG97-related domains.
 
@@ -540,13 +618,15 @@ The `validators.py` module checks that:
 - CSV tables can be read.
 - Saved model files can be loaded.
 
-Run the artefact validation from the project root with:
+Run artefact validation from the project root with:
+
+### Windows
 
 ```powershell
 python dashboard\validators.py
 ```
 
-On macOS or Linux, use:
+### macOS or Linux
 
 ```bash
 python3 dashboard/validators.py
@@ -554,7 +634,42 @@ python3 dashboard/validators.py
 
 This validates the presence, readability and loadability of dashboard artefacts. It does not prove clinical validity or replace independent software testing.
 
-Representative dashboard test evidence was retained for:
+## Synthetic dashboard test data
+
+The project can be tested using synthetic records containing the eight required predictor columns.
+
+These records are not real patient data:
+
+```csv
+M/F,Age,EDUC,SES,MMSE,eTIV,nWBV,ASF
+F,60,6,1,30,1105.65,0.644399,0.875539
+M,65,12,2,27,1300.00,0.700000,1.050000
+F,72,16,3,24,1500.00,0.750000,1.200000
+M,81,18,4,18,1750.00,0.790000,1.400000
+F,98,23,5,4,2004.48,0.836842,1.587298
+```
+
+Save the file as:
+
+```text
+batch_scoring_test.csv
+```
+
+To test the dashboard:
+
+1. Open Patient Risk Scoring.
+2. Select CSV batch scoring.
+3. Upload `batch_scoring_test.csv`.
+4. Select Score uploaded patients.
+5. Confirm that five scored rows appear.
+6. Select one uploaded row.
+7. Select Generate SHAP to NG97 explanation.
+
+The synthetic records must not be interpreted as real patient cases or clinical examples.
+
+## Dashboard test evidence
+
+Representative test evidence was retained for:
 
 - Classifier comparison.
 - Confusion-matrix display.
@@ -578,7 +693,18 @@ The final analytical output set contains:
 - Two processed-data files.
 - One run manifest.
 
-The CSV result tables include descriptive statistics, missing-value audit, tuning results, held-out performance, held-out predictions, DeLong comparisons and four SHAP-related tables.
+The CSV result tables include:
+
+- Descriptive statistics.
+- Missing-value audit.
+- Hyperparameter tuning results.
+- Held-out test-set performance.
+- Held-out test predictions.
+- Pairwise DeLong comparisons.
+- Transformed-feature SHAP importance.
+- Original-predictor SHAP importance.
+- Cross-model SHAP ranking consensus.
+- Long-format numerical SHAP values.
 
 ## Limitations
 
@@ -596,6 +722,7 @@ The project has the following limitations:
 - The raw DeLong p-values are not multiplicity-adjusted.
 - The dashboard has not demonstrated prospective clinical utility, subgroup fairness, workflow compatibility or information-governance readiness.
 - The NICE NG97 view is a conceptual crosswalk, not a clinical guideline benchmark.
+- The dashboard is a research demonstration interface and must not be used for diagnosis, triage or treatment.
 
 ## Reproducibility
 
@@ -611,14 +738,15 @@ The project records:
 
 The main analysis and dashboard use fixed output filenames. Rerunning the analysis may overwrite existing files. A separate timestamped archive or run identifier is required to preserve a complete history of multiple runs.
 
-## GitHub repository hygiene
+## Repository hygiene
 
-Do not commit the following items unless they are explicitly required and permitted:
+Do not commit or share the following items unless they are explicitly required and permitted:
 
 - The `.venv` directory.
+- `__pycache__` folders.
+- `.pyc` files.
 - Passwords, access tokens or other credentials.
 - Temporary files.
-- Python cache folders.
 - Unauthorised copies of restricted raw data.
 
-The repository should retain the source code, README, requirements file, saved analytical outputs and the dashboard artefacts.
+The repository and OneDrive folder should retain the source code, README, requirements file, saved analytical outputs and dashboard artefacts required for marker review.
